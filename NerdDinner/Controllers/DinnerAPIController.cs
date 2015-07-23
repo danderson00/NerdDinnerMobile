@@ -21,10 +21,5 @@ namespace NerdDinner.Controllers
         {
             return db.Dinners.ToList().Select(d => SearchController.JsonDinnerFromDinner(d));
         }
-
-        public int Create(JsonDinner dinner)
-        {
-
-        }
     }
 }
