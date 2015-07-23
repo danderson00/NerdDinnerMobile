@@ -16,8 +16,8 @@ namespace NerdDinner.Controllers
         public int DinnerID { get; set; }
         public DateTime EventDate { get; set; }
         public string Title { get; set; }
-        public double Latitude { get; set; }
-        public double Longitude { get; set; }
+        public double? Latitude { get; set; }
+        public double? Longitude { get; set; }
         public string Description { get; set; }
         public int RSVPCount { get; set; }
         public string Url { get; set; }
@@ -88,14 +88,14 @@ namespace NerdDinner.Controllers
             return jsonDinners.AsQueryable<JsonDinner>();
         }
 
-        private JsonDinner JsonDinnerFromDinner(Dinner dinner)
+        static internal JsonDinner JsonDinnerFromDinner(Dinner dinner)
         {
             return new JsonDinner
             {
                 DinnerID = dinner.DinnerID,
                 EventDate = dinner.EventDate,
-                Latitude = dinner.Location.Latitude.Value,
-                Longitude = dinner.Location.Longitude.Value,
+                Latitude = dinner.Location.Latitude,
+                Longitude = dinner.Location.Longitude,
                 Title = dinner.Title,
                 Description = dinner.Description,
                 RSVPCount = dinner.RSVPs.Count(),
