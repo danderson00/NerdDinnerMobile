@@ -43,22 +43,34 @@ namespace NerdDinner.Controllers
             }
         }
 
+        [Authorize]
+        public ActionResult UnRegister(int id)
+        {
+            UnRegisterForDinner(id);
+            return RedirectToAction("Details", "Dinners", new { id = id });
+        }
+
         //
         // AJAX: /RSVP/CancelAjax/1
 
         [Authorize, HttpPost]
         public ActionResult CancelAjax(int id)
         {
+            UnRegisterForDinner(id);
+            return Content("Sorry you can't make it!");
+        }
+
+        private void UnRegisterForDinner(int id)
+        {
             Dinner dinner = db.Dinners.Find(id);
 
-            RSVP rsvp = dinner.RSVPs.SingleOrDefault(r => this.User.Identity.Name ==  r.AttendeeName);
+            RSVP rsvp = dinner.RSVPs.SingleOrDefault(r => this.User.Identity.Name == r.AttendeeName);
             if (rsvp != null)
             {
                 db.RSVPs.Remove(rsvp);
                 db.SaveChanges();
             }
 
-            return Content("Sorry you can't make it!");
         }
     }
 }

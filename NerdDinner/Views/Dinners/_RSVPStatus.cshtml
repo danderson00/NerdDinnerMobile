@@ -25,7 +25,7 @@
 		</p>
 	
 		@Ajax.ActionLink("Cancel your RSVP",
-							 "CancelAjax", "RSVP",
+                                         "UnRegister", "RSVP",
 							 new { id = Model.DinnerID },
 							 new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "rsvpmsg", OnSuccess = "AnimateRSVPMessage" })    
 	
@@ -34,7 +34,7 @@
 		{ 
 
 		@Ajax.ActionLink("RSVP for this event",
-							 "RegisterAjax", "RSVP",
+                                         "Register", "RSVP",
 							 new { id = Model.DinnerID },
 							 new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "rsvpmsg", OnSuccess = "AnimateRSVPMessage" })
 		}
