@@ -54,7 +54,7 @@ namespace NerdDinner.Controllers
 
         public override Task<bool> DeleteAsync(string id)
         {
-            return this.DeleteItemAsync(id);
+            return this.DeleteItemAsync(int.Parse(id));
         }
 
         public override SingleResult<MobileDinner> Lookup(string id)
@@ -64,7 +64,7 @@ namespace NerdDinner.Controllers
 
         public override Task<MobileDinner> UpdateAsync(string id, Delta<MobileDinner> patch)
         {
-            return this.UpdateEntityAsync(patch, id);
+            return this.UpdateEntityAsync(patch, int.Parse(id));
         }
     }
 }
