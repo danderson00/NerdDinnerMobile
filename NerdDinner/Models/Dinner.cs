@@ -6,6 +6,7 @@ using System.Data.Entity.Spatial;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Azure.Mobile.Server;
 
 namespace NerdDinner.Models
 {
@@ -82,5 +83,20 @@ namespace NerdDinner.Models
         public int Id;
         public string Title;
         public string Address;
+    }
+
+    public class MobileDinner : EntityData
+    {
+        public string Title { get; set; }
+
+        public string Description { get; set; }
+
+        public string ContactPhone { get; set; }
+
+        public string Address { get; set; }
+
+        public DateTime EventDate { get; set; }
+
+        public string Country { get; set; }
     }
 }
